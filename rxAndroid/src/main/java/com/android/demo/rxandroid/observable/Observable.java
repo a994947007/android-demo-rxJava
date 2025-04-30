@@ -66,6 +66,10 @@ public abstract class Observable<T> implements ObservableSource<T>{
         return new ObservableDoOnEach<>(this, Functions.<T>emptyConsumer(), Functions.<Throwable>emptyConsumer(), Functions.EMPTY_ACTION, onAfterTerminate);
     }
 
+    public Observable<T> doOnDispose(Action onDispose) {
+        return new ObservableDispose<>(this, onDispose);
+    }
+
     public Observable<T> subscribeOn(Scheduler scheduler) {
         return new ObservableSubscribeOn<>(this, scheduler);
     }

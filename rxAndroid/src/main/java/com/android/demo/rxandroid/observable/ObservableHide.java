@@ -10,7 +10,7 @@ public class ObservableHide<T> extends AbstractObservableWithUpStream<T, T>{
 
     @Override
     public void subscribeActual(Observer<T> observer) {
-
+        source.subscribeActual(new HideObserver<>(observer));
     }
 
     private static class HideObserver<T> extends BaseObserver<T, T> {

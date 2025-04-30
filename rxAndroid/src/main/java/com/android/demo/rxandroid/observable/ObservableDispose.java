@@ -28,6 +28,11 @@ public class ObservableDispose<T> extends AbstractObservableWithUpStream<T, T>{
         }
 
         @Override
+        public void onNext(T t) {
+            actual.onNext(t);
+        }
+
+        @Override
         public void dispose() {
             super.dispose();
             onDispose.run();
